@@ -59,6 +59,8 @@ private final int BACKGROUBD=182;
         geofencingClient = LocationServices.getGeofencingClient(this);
         geofencehelper=new Geofencehelper(this);
         Intent intent=getIntent();
+        Intent serviceIntent = new Intent(this, GeofenceForegroundService.class);
+        startService(serviceIntent);
         if(intent!=null)
         {
             String radius=intent.getStringExtra(RADIUS_DATA);
@@ -66,7 +68,8 @@ private final int BACKGROUBD=182;
             {
                 float radi=Float.parseFloat(radius);
                 georadius=radi;
-                LatLng latLng = new LatLng(9.755716232144868, 76.48774164327573);
+                //LatLng latLng = new LatLng(9.755716241185086, 76.48773637337722);
+                LatLng latLng = new LatLng(9.755716241185086, 76.48773637337722);
 
                 addgeofence(latLng,georadius);
 
